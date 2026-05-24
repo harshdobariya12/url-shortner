@@ -165,7 +165,8 @@ const UserUrl = () => {
                     </thead>
                     <tbody>
                         {sorted.map((url) => {
-                            const shortLink = `http://localhost:3000/${url.short_url}`
+                            const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000"
+                            const shortLink = `${baseUrl}/${url.short_url}`
                             return (
                                 <tr key={url._id}>
                                     {/* Original URL */}
