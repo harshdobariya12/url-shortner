@@ -14,11 +14,12 @@ import cookieParser from "cookie-parser"
 dotenv.config("./.env")
 
 const app = express();
+const PORT =
 
-app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // your React app
-    credentials: true // 👈 this allows cookies to be sent
-}));
+    app.use(cors({
+        origin: process.env.FRONTEND_URL || "http://localhost:5173", // your React app
+        credentials: true // 👈 this allows cookies to be sent
+    }));
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -35,7 +36,7 @@ app.use(errorHandler)
 
 app.listen(3000, () => {
     connectDB()
-    console.log(`Server is running on ${process.env.FRONTEND_URL} `);
+    console.log(`Server is running on port 3000 `);
 })
 
 // GET - Redirection 
