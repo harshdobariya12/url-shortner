@@ -11,14 +11,20 @@ import cors from "cors"
 import { attachUser } from "./src/utils/attachUser.js";
 import cookieParser from "cookie-parser"
 
-dotenv.config("./.env")
+dotenv.config({ path: "./.env" })
 
 const app = express();
 
 
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL || "http://localhost:5173", // your React app
+//     credentials: true // 👈 this allows cookies to be sent
+// }));
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // your React app
-    credentials: true // 👈 this allows cookies to be sent
+    origin: "https://url-shortner-amber.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json())
